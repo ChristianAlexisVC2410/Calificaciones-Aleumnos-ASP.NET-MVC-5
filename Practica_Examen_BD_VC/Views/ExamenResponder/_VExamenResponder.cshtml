@@ -1,0 +1,45 @@
+﻿@using Practica_Examen_BD_VC.Models
+@model List<Practica_Examen_BD_VC.Models.Examenes>
+
+@{
+    ViewBag.Title = "_VExamenResponder";
+}
+
+@{
+    PreguntasRespondidas pr = new PreguntasRespondidas();
+    var OpcionSeleccionada = pr.OpcionSeleccionada;
+
+ 
+}
+
+<h2>Responder Examen</h2>
+
+
+
+    @foreach (var item in Model)
+    {
+        Examenes exa = new Examenes();
+
+        var PreguntasId = item.PreguntaId;
+
+
+        <h3>
+            @Html.DisplayFor(modelItem => item.NombrePregunta)
+        </h3>
+        <h5>
+            @Html.DisplayFor(modelItem => item.Respuesta1)   <input type="radio" name="@PreguntasId" value="@item.Respuesta1"  />
+        </h5>
+        <h5>
+            @Html.DisplayFor(modelItem => item.Respuesta2)   <input type="radio" name="@PreguntasId" value="@item.Respuesta2" />
+        </h5>
+        <h5>
+            @Html.DisplayFor(modelItem => item.Respuesta3)    <input type="radio" name="@PreguntasId" value="@item.Respuesta3" />
+        </h5>
+        <h5>
+            @Html.DisplayFor(modelItem => item.Respuesta4)    <input type="radio" name="@PreguntasId" value="@item.Respuesta4" />
+        </h5>
+        <h5>
+            <input type="hidden" name="r_@PreguntasId" value="@item.RespuestaCorrecta" />
+        </h5>
+            }
+    

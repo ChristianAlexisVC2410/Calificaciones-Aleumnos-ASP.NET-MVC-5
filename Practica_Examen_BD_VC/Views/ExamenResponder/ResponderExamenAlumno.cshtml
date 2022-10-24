@@ -1,0 +1,53 @@
+﻿@model Practica_Examen_BD_VC.Models.Alumnos
+
+<div>
+    <h2>
+        @Html.DisplayFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.DisplayFor(model => model.ApellidoPaterno, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.DisplayFor(model => model.ApellidoMaterno, new { htmlAttributes = new { @class = "form-control" } })
+
+    </h2>
+</div>
+
+<div class="container-fluid text-center">
+    @using (Html.BeginForm("_VExamenResponder", "ExamenResponder"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+
+
+                <div class="col-md-10">
+                    <h1>
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.MatriculaId)
+
+                    </h1>
+                   
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+        <div id="divPreguntaExamen">
+          
+                @Html.Partial("_VExamenResponder", (List<Practica_Examen_BD_VC.Models.Examenes>)ViewBag.MiListado)
+        </div>
+
+    <div class="row" style="margin-top:20px;">
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-success">Enviar</button>
+        </div>
+    </div>
+}
+</div>

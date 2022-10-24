@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Practica_Examen_BD_VC.Models.Calificaciones>
+
+<h1>Calificaciones</h1>
+
+<div class="row">
+    <div class="col-sm-12">
+        @using (Html.BeginForm("vistaCalificacion", "ExamenResponder"))
+        {
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-5">
+                  
+                        
+
+                        <select class="form-control" name="Grupo">
+                            @foreach (var i in ViewBag.Grupos1)
+                            {
+                            <option value="@i">@i</option>
+                                }
+                           
+
+                        </select>
+                 
+                
+                </div>
+                <div class="col-sm-3">
+                    <div style="margin-right: 100px;" class="col-md-3"><button type="submit" class="btn btn-success" style="margin-left:25px;">Buscar</button></div>
+                </div>
+
+               
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row" style="margin-top:30px;">
+    <table class="table table-hover">
+        <tr>
+            <th>Nombre Alumno</th>
+            <th>Grupo</th>
+            <th>Califcacion</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alumnos.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alumnos.Cuatrimestre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cal)
+                </td>
+
+
+            </tr>
+        }
+
+    </table>
+</div>
